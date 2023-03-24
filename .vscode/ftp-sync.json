@@ -1,0 +1,27 @@
+{
+    "remotePath": "./htdocs/API-JS",
+    "host": "ftpupload.net",
+    "username": "epiz_33692941",
+    "password": "v9NoZwXLECkpgi",
+    "port": 21,
+    "secure": false,
+    "protocol": "ftp",
+    "uploadOnSave": false,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": null,
+    "passphrase": null,
+    "agent": null,
+    "allow": [],
+    "ignore": [
+        "\\.vscode",
+        "\\.git",
+        "\\.DS_Store"
+    ],
+    "generatedFiles": {
+        "extensionsToInclude": [
+            ""
+        ],
+        "path": ""
+    }
+}
