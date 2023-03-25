@@ -31,3 +31,26 @@ function response(res){
 
    }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const btnDelTables = document.querySelector('#btnDelTables');
+    btnDelTables.addEventListener('click', () => {
+      const tabla = document.querySelector('#tabla');
+      const filas = tabla.querySelectorAll('tr');
+  
+      filas.forEach((fila) => {
+        const cellsToEliminate = fila.querySelectorAll('td');
+        cellsToEliminate.forEach((cell) => {
+          cell.remove();
+        });
+      });
+    });
+  });
+ 
+  
+  
+  
+  
+  
+  
+  
