@@ -1,3 +1,5 @@
+/* API info */
+
 function getCountryData() {
     return new Promise((resolve, reject) => {
       let xhr = new XMLHttpRequest();
@@ -24,7 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .catch(error => console.error(error));
 
-}); 
+});
+
+/* Functions*/ 
 
 function initial_response(data){
     let tabla = document.getElementById("tabla");
@@ -38,9 +42,47 @@ function initial_response(data){
      let celda3 = nuevaFila.insertCell();
      celda1.textContent = objeto[i].altSpellings[0];
      celda2.textContent = objeto[i].name.common;
-     celda3.textContent = objeto[i].region;
+     celda3.textContent = objeto[i].continents;
     }
  }; 
+
+let regionText = '';
+function handleKeyDown(event) {
+    if (event.key === "Enter") {
+        regionText = event.target.value;
+        console.log(regionText)
+    }
+  } 
+
+    function prueba(data){
+    var objeto = JSON.parse(data)
+    var table = document.getElementById("tabla");
+    var rowCount = table.rows.length;
+    for (let i = rowCount - 1; i >= 0; i--) {
+        table.deleteRow(i);
+    }
+    for (i = 0; i < objeto.length; i++){
+        if (objeto[i].region === `${regionText}`){
+          let nuevaFila = tabla.insertRow();
+          let celda1 = nuevaFila.insertCell();
+          let celda2 = nuevaFila.insertCell();
+          let celda3 = nuevaFila.insertCell();
+          celda1.textContent = objeto[i].altSpellings[0];
+          celda2.textContent = objeto[i].name.common;
+          celda3.textContent = objeto[i].continents;
+        }
+  }
+}
+
+/* Asincronus Functions, button functions*/
+
+function EjecutaPrueba() {
+    getCountryData()
+        .then(data => {
+            prueba(data);
+        })
+        .catch(error => console.error(error));
+};
 
 function loadData() {
     getCountryData()
@@ -50,10 +92,10 @@ function loadData() {
         .catch(error => console.error(error));
 }
 
-function delRow() {
+/* function delRow() {
     var table = document.getElementById("tabla");
     var rowCount = table.rows.length;
     for (let i = rowCount - 1; i >= 0; i--) {
         table.deleteRow(i);
       }
-  }
+  } */
