@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Paises</title>
     <link rel="stylesheet" href="..\css\bootstrap-5.3.0-alpha1-dist\css\bootstrap.css">
+    <script src="api.js"></script> 
 </head>
 <body>
     <div class="container-fluid">
@@ -13,7 +14,7 @@
         <h1>API en Javascript</h1>
         <p>Descripcion pendiente</p>
         <p><input type="text" id="camp1"> </p>
-        <p> <button> Reorganizar</button></p>
+        <p> <button onclick="delRow()"> Reorganizar</button> <button onclick="loadData()"> Filtrar</button></p>
         <h2> Paises </h2>
         <table class="table">
             <thead> 

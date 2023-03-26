@@ -1,22 +1,35 @@
-function getCountryData(){
-    let xhr = new XMLHttpRequest();
-
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            initial_response(xhr.responseText);
+function getCountryData() {
+    return new Promise((resolve, reject) => {
+      let xhr = new XMLHttpRequest();
+  
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
+            resolve(xhr.responseText);
+          } else {
+            reject("Error en la solicitud");
+          }
         }
-    };
+      };
+  
+      xhr.open("GET", "https://restcountries.com/v3.1/all", true);
+      xhr.send();
+    });
+}
+document.addEventListener('DOMContentLoaded', function() {
+    
+    getCountryData()
+    .then(data => {
+    initial_response(data);
+    })
+    .catch(error => console.error(error));
 
-    xhr.open("GET", "https://restcountries.com/v3.1/all", true);
-    xhr.send();
-} 
-getCountryData();
-/* function initial_response(res){
-    console.log("llamada api resuelta");
- 
+}); 
+
+function initial_response(data){
     let tabla = document.getElementById("tabla");
  
-    var objeto = JSON.parse(res);
+    var objeto = JSON.parse(data);
     for (i = 0; i < objeto.length; i++){
     // console.log(`${objeto[i].name.common} aaaaaaaaaaaaaaaaaaaaaaaaaaaaa`)
      let nuevaFila = tabla.insertRow();
@@ -27,4 +40,20 @@ getCountryData();
      celda2.textContent = objeto[i].name.common;
      celda3.textContent = objeto[i].region;
     }
- }; */
+ }; 
+
+function loadData() {
+    getCountryData()
+        .then(data => {
+            initial_response(data);
+        })
+        .catch(error => console.error(error));
+}
+
+function delRow() {
+    var table = document.getElementById("tabla");
+    var rowCount = table.rows.length;
+    for (let i = rowCount - 1; i >= 0; i--) {
+        table.deleteRow(i);
+      }
+  }
