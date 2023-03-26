@@ -35,7 +35,6 @@ function initial_response(data){
  
     var objeto = JSON.parse(data);
     for (i = 0; i < objeto.length; i++){
-    // console.log(`${objeto[i].name.common} aaaaaaaaaaaaaaaaaaaaaaaaaaaaa`)
      let nuevaFila = tabla.insertRow();
      let celda1 = nuevaFila.insertCell();
      let celda2 = nuevaFila.insertCell();
