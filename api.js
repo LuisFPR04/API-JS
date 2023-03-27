@@ -32,6 +32,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Functions*/ 
 
+function createCells(objeto, tabla, i) {
+  let nuevaFila = tabla.insertRow();
+  let celda1 = nuevaFila.insertCell();
+  let celda2 = nuevaFila.insertCell();
+  let celda3 = nuevaFila.insertCell();
+  let celda4 = nuevaFila.insertCell();
+
+  celda1.textContent = objeto[i].altSpellings[0];
+  celda2.textContent = objeto[i].name.common;
+  celda3.textContent = objeto[i].continents;
+  celda4.textContent = objeto[i].population;
+}
+
 function initial_response(data){
     let tabla = document.getElementById("tabla");
 
@@ -47,32 +60,13 @@ function initial_response(data){
     for (i = 0; i < objeto.length; i++){
 
       if(filtro.toLowerCase() === `${objeto[i].region.toLowerCase()}`){
-        let nuevaFila = tabla.insertRow();
-        let celda1 = nuevaFila.insertCell();
-        let celda2 = nuevaFila.insertCell();
-        let celda3 = nuevaFila.insertCell();
-        celda1.textContent = objeto[i].altSpellings[0];
-        celda2.textContent = objeto[i].name.common;
-        celda3.textContent = objeto[i].continents;
+        createCells(objeto, tabla, i)
         
       } else if(filtro === null || filtro.trim()===""){
-        let nuevaFila = tabla.insertRow();
-        let celda1 = nuevaFila.insertCell();
-        let celda2 = nuevaFila.insertCell();
-        let celda3 = nuevaFila.insertCell();
-        celda1.textContent = objeto[i].altSpellings[0];
-        celda2.textContent = objeto[i].name.common;
-        celda3.textContent = objeto[i].continents;
+        createCells(objeto, tabla, i)
       }
     }
  }; 
-
-function handleKeyDown(event) {
-    if (event.key === "Enter") {
-        regionText = event.target.value;
-        console.log(regionText)
-    }
-  } 
 
 /* Asincronus Functions, button functions*/
 function loadData() {
@@ -90,3 +84,7 @@ function loadData() {
         table.deleteRow(i);
       }
   } */
+
+/* Pruebas */
+
+console.log()
