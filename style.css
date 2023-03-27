@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+}
+
+
+.margin-aut {
+    margin: auto;
+}
+
+.margin-table-top{
+    border: 2px solid black;
+}
+
+.table-top{
+    background-color: #9FBDBE;
+    border: 2px solid black;
+}

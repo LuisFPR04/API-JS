@@ -19,7 +19,7 @@ function getCountryData() {
       xhr.open("GET", "https://restcountries.com/v3.1/all", true);
       xhr.send();
     });
-}
+} 
 
 document.addEventListener('DOMContentLoaded', function() {
     getCountryData()

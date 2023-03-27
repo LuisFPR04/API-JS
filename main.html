@@ -5,31 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Paises</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="..\css\bootstrap-5.3.0-alpha1-dist\css\bootstrap.css">
     <script src="api.js"></script> 
 </head>
 <body>
     <div class="container-fluid">
-        <div style="margin:auto;">
+        <div class="margin-aut">
         <h1>API en Javascript</h1>
-        <p>Descripcion pendiente</p>
+        <p>Este es un proyecto de API usando Javascript que saca los datos de <a href="https://restcountries.com"> esta pagina. </a>
+        Los filtros funcionan para organizar la información, ya sea por país, continente, cantidad de población. El campo de texto
+        permite filtrar la tabla por el nombre del continente una vez dado el boton "filtrar"</p>
         <p>Filtros</p>
-        <p><input type="text" id="camp1" > </p>
-        <p> <button onclick="loadData()" class="btn btn-primary"> Filtrar</button> 
+        <p><input type="text" id="camp1"> 
+            <select id="menu">
+                <option value="default"> Escoja una opción</option>
+                <option value="opcion 1"> Pais</option>
+                <option value="opcion 2"> Continente</option>
+                <option value="opcion 3"> Población</option>
+            </select>
+        </p>
+        <p> 
+            <button onclick="loadData()" class="btn btn-primary"> Filtrar</button> 
             <button onclick="delRow()" class="btn btn-primary"> Limpiar</button> 
-        <select id="menu">
-            <option value="default"> Escoja una opción</option>
-            <option value="opcion 1"> Pais</option>
-            <option value="opcion 2"> Continente</option>
-            <option value="opcion 3"> Población</option>
-        </select></p>
+        </p>
         <h2> Paises </h2>
         <table class="table">
-            <thead style="background-color: #9FBDBE; border: 2px solid black;"> 
-                <th style="border: 2px solid black;"> Abreviatura</th>
-                <th style="text-align: center; border: 2px solid black;"> Pais </th>
-                <th style="border: 2px solid black;"> Continente</th>
-                <th style="border: 2px solid black;"> Poblacion</th>
+            <thead class="table-top"> 
+                <th class="margin-table-top"> Abreviatura</th>
+                <th style="text-align: center;" class="margin-table-top"> Pais </th>
+                <th class="margin-table-top"> Continente</th>
+                <th class="margin-table-top"> Poblacion</th>
             </thead>
             <tbody id="tabla"> 
           
