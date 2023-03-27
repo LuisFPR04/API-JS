@@ -10,19 +10,26 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div style="margin:auto;margin-right: 50%;">
+        <div style="margin:auto;">
         <h1>API en Javascript</h1>
         <p>Descripcion pendiente</p>
         <p>Filtros</p>
         <p><input type="text" id="camp1" > </p>
-        <p> <button onclick="loadData()" class="btn btn-primary"> Filtrar</button> </p>
+        <p> <button onclick="loadData()" class="btn btn-primary"> Filtrar</button> 
+            <button onclick="delRow()" class="btn btn-primary"> Limpiar</button> 
+        <select id="menu">
+            <option value="default"> Escoja una opción</option>
+            <option value="opcion 1"> Pais</option>
+            <option value="opcion 2"> Continente</option>
+            <option value="opcion 3"> Población</option>
+        </select></p>
         <h2> Paises </h2>
         <table class="table">
-            <thead> 
-                <th> Abreviatura</th>
-                <th style="text-align: center;"> Pais </th>
-                <th> Region</th>
-                <th> Poblacion</th>
+            <thead style="background-color: #9FBDBE; border: 2px solid black;"> 
+                <th style="border: 2px solid black;"> Abreviatura</th>
+                <th style="text-align: center; border: 2px solid black;"> Pais </th>
+                <th style="border: 2px solid black;"> Continente</th>
+                <th style="border: 2px solid black;"> Poblacion</th>
             </thead>
             <tbody id="tabla"> 
           
