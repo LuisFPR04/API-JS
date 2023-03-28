@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function delRow() {
   var table = document.getElementById("tabla");
   var rowCount = table.rows.length;
+
   for (let i = rowCount - 1; i >= 0; i--) {
       table.deleteRow(i);
     }
@@ -84,7 +85,6 @@ function createCells(objeto, tabla, i) {
 
 function initial_response(data){
     let tabla = document.getElementById("tabla");
-
     filtro = document.getElementById("camp1").value;
 
     delRow();
@@ -103,12 +103,14 @@ function initial_response(data){
 
  function desplegable(){
   let tabla = document.getElementById("tabla");
+  let camp = document.getElementById("camp1").value.trim();
 
   delRow();
 
   var opcionSelec = document.getElementById("menu").value;
   var opcion = opcionSelec;
-  switch(opcion){
+  if (camp === ""){
+    switch(opcion){
       case "default":
           break;
       case "opcion 1":
@@ -116,6 +118,8 @@ function initial_response(data){
           for (i = 0; i < objetoFiltrado.length; i++){
             createCells(paises, tabla, i)
           }
+
+          /* This works weird */
           break;
       case "opcion 2":
         continentes = objetoFiltrado.sort((a, b) => (a.region > b.region) ? 1 : -1);
@@ -130,6 +134,36 @@ function initial_response(data){
           }
           break;
   }
+
+  } if (camp.length > 0) {
+    switch(opcion){
+      case "default":
+          break;
+      case "opcion 1":
+          paises = objetoFiltrado.sort((a, b) => (a.name.common > b.name.common) ? 1 : -1);
+          for (i = 0; i < objetoFiltrado.length; i++){
+            if (camp.toLowerCase() === `${paises[i].region.toLowerCase()}`){
+              createCells(paises, tabla, i)
+            }
+            }
+          break;
+      case "opcion 2":
+        continentes = objetoFiltrado.sort((a, b) => (a.region > b.region) ? 1 : -1);
+        for (i = 0; i < objetoFiltrado.length; i++){
+            createCells(continentes, tabla, i)
+        }
+          /* This works weird */
+          break; 
+      case "opcion 3":
+        poblacion = objetoFiltrado.sort((a, b) => (b.population - a.population));
+        for (i = 0; i < objetoFiltrado.length; i++){
+          if (camp.toLowerCase() === `${poblacion[i].region.toLowerCase()}`){
+            createCells(poblacion, tabla, i)
+          }
+          }
+          break;
+  }
+  }
 }
 
 /* Asincronus Functions, button functions*/
@@ -137,7 +171,7 @@ function loadData() {
   let camp = document.getElementById("camp1").value.trim();
   var opcionSelec = document.getElementById("menu").value;
   
-  if (camp.length > 0){
+  if (camp.length > 0 && opcionSelec === "default" ){
     getCountryData()
         .then(data => {
             initial_response(data);
@@ -146,7 +180,8 @@ function loadData() {
   } if (opcionSelec != "default"){
     desplegable();
   }
-
+  /*document.getElementById("camp1").value = "";
+  document.getElementById("menu").value = "default"*/
 }
 
 

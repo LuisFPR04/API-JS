@@ -1,5 +1,11 @@
 h1 {
+    margin-right: 2%;
+    position: static;
     text-align: center;
+}
+
+.title{
+    margin: 25%;
 }
 
 
